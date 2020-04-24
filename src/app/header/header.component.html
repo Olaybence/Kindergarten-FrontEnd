@@ -1,0 +1,55 @@
+<div>
+    <div class="banner-image">
+        <img src="assets/images/pottom_logo.jpg">
+    </div>
+    <p>You selected: {{ selected }}</p>
+
+    <div class="demo-menu">
+        <div class="menu-section">
+            <mat-toolbar>
+                <ng-container *ngFor="let item of menuItems">
+
+                    <!-- Menu points WITHOUT Subitems AND NOT IN admin mode -->
+                    <ng-container *ngIf="globals.mode != globals.adminMode &&
+                                        ( !item.subItems || item.subItems.length == 0 )">
+                        <button mat-button (click)="select(item)">{{item.title}}</button>
+                    </ng-container>
+
+                    <!-- Menu points WITH Subitems OR IN admin mode -->
+                    <ng-container
+                        *ngIf="globals.mode == globals.adminMode || ( item.subItems && item.subItems.length != 0 )">
+                        <div mat-menu-item>
+                            <button mat-button [matMenuTriggerFor]="belowMenu">{{item.title}}</button>
+                            <button mat-icon-button (click)="openDialog('EDITMENU',item)"><mat-icon>create</mat-icon></button>
+                            <button mat-icon-button (click)="openDialog('DELETEMENU', item)"><mat-icon>clear</mat-icon></button>
+                        </div>
+                        <mat-menu #belowMenu="matMenu" yPosition="below">
+
+                            <ng-container *ngFor="let subItem of item.subItems">
+                                <div mat-menu-item>
+                                    <button mat-button (click)="select(subItem.title)">{{ subItem.title }}</button>
+                                    <button mat-icon-button (click)="openDialog('EDITSUBMENU', subItem)"><mat-icon>create</mat-icon></button>
+                                    <button mat-icon-button (click)="openDialog('DELETESUBMENU', subItem)"><mat-icon>clear</mat-icon></button>
+                                </div>
+                            </ng-container>
+
+                            <!-- Add menu point -->
+                            <button *ngIf="globals.mode == globals.adminMode" mat-icon-button
+                                (click)="openDialog('ADDSUBMENU',item)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+
+                        </mat-menu>
+                    </ng-container>
+                </ng-container>
+
+                <!-- Add menu point -->
+                <button *ngIf="globals.mode == globals.adminMode" mat-icon-button (click)="openDialog('ADDMENU')">
+                    <mat-icon>
+                        add
+                    </mat-icon>
+                </button>
+            </mat-toolbar>
+        </div>
+    </div>
+</div>
