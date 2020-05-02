@@ -1,5 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-html, body { height: 100%; }
+html, body {
+    width: 100%;
+    height: 100%;
+    
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bd-img {
+    background-image: url('/assets/images/pottom_fo_hatter.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}

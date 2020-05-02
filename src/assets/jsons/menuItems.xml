@@ -1,0 +1,16 @@
+<menu>
+    <item>
+        <id>0</id>
+        <title>Bemutatkozás</title>
+        <subitems></subitems>
+        <articles>0,1</articles>
+        <main>true</main>
+    </item>
+    <item>
+        <id>1</id>
+        <title>Alapítvány</title>
+        <subitems></subitems>
+        <articles>2,3</articles>
+        <main>true</main>
+    </item>
+</menu>

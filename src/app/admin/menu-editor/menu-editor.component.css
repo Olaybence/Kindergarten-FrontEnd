@@ -1,0 +1,17 @@
+.item {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    width: 90px;
+}
+
+.add-menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

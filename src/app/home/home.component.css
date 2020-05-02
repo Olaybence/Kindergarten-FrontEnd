@@ -1,0 +1,19 @@
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.main-articles {
+    width: 70%;
+}
+
+.side-articles {
+    width: 30%;
+}

@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+    <ng-container *ngFor="let item of menuItems">
+        <mat-toolbar-row class="item">
+            <button mat-button (click)="select(item[0])">
+                {{item[0]}}
+            </button>
+
+            <div class="icons">
+                <button color="warn" mat-mini-fab (click)="edit(item[0])" matTooltip="Szerkesztés">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button color="warn" mat-mini-fab (click)="delete(item[0])" matTooltip="Törlés">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar-row>
+    </ng-container>
+
+    <mat-toolbar-row class="item">
+        <div *ngIf="!addNewMI">
+            <button color="warn" mat-mini-fab (click)="addNewMI = true;" matTooltip="Szerkesztés">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div *ngIf="addNewMI" class="add-menu">
+            <form>
+                <mat-form-field style="width: 100%">
+                  <mat-label>Menüpont neve</mat-label>
+                  <input matInput>
+                </mat-form-field>
+            </form>
+            <div class="icons">
+                <button color="warn" mat-mini-fab (click)="addNewMI = false;" matTooltip="Szerkesztés">
+                    <mat-icon>done</mat-icon>
+                </button>
+                <button color="warn" mat-mini-fab (click)="addMenuItem()" matTooltip="Szerkesztés">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

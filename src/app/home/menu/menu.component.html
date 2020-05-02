@@ -1,0 +1,23 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <ng-container *ngFor="let item of menuItems">
+
+            <!-- Menu points WITHOUT Subitems AND NOT IN admin mode -->
+            <ng-container *ngIf="item.length <= 1">
+                <button mat-menu-item (click)="select(item[0])">{{ item[0] }}</button>
+            </ng-container>
+
+            <!-- Menu points WITH Subitems OR IN admin mode -->
+            <ng-container *ngIf="item.length > 1">
+                <button mat-menu-item [matMenuTriggerFor]="belowMenu"> {{ item[0] }} </button>
+                <mat-menu #belowMenu="matMenu" yPosition="below">
+
+                    <ng-container *ngFor="let subItem of item.slice(1)">
+                        <button mat-menu-item (click)="select(subItem)">{{ subItem }}</button>
+                    </ng-container>
+
+                </mat-menu>
+            </ng-container>
+        </ng-container> 
+    </mat-toolbar-row>
+</mat-toolbar>

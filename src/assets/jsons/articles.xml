@@ -1,0 +1,31 @@
+<articles>
+    <item>
+        <id>0</id>
+        <title>Hiányoztok nekünk pöttömök!</title>
+        <body>
+            {{image}}
+        </body>
+        <links></links>
+        <images>
+            <img>assets/images/hianyoztok_betuzve.jpg</img>
+        </images>
+    </item>
+    <item>
+        <id>1</id>
+        <title>ISKOLAI BEIRATKOZÁS 2020</title>
+        <body>
+            Beiratkozás az általános iskolákba
+            A körzettel nem rendelkező általános iskola az oda jelentkezők részére a beiratkozást 
+            2020. április 6-április 24. között tartja.
+            {{link}}
+            Fontos! Tájékozódjanak a kiválasztott iskola weboldalán is!
+            Intézkedés csak levélben és a KRÉTA felületén.
+            {{link}}
+        </body>
+        <images></images>
+        <links>
+            <link>https://www.oktatas.hu/kozneveles/aktualis_tanev_esemenyei/iskolai_beiratkozas_2020</link>
+            <link>https://eugyintezes.e-kreta.hu/kezdolap</link>
+        </links>
+    </item>
+</articles>
