@@ -47,6 +47,6 @@ export class MenuEditorComponent {
 
   addMenuItem() {
     this.addNewMI = false;
-    console.log('addMenuItem',mi);
+    console.log('addMenuItem');
   }
 }

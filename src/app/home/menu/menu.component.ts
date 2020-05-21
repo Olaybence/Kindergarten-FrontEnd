@@ -14,10 +14,11 @@ export class MenuComponent implements OnInit {
   menuItems: Array<Array<String>>;
   ADMIN_MODE: number = ADMIN_MODE;
 
-  constructor(private router: Router, 
+  constructor(private routeDir: Router,
               private miService: MenuItemService) {
-    this.miService.getMenuItems().subscribe((ans: String[][]) => {
-      this.menuItems = ans;
+    this.miService.getMenuItems().subscribe((menuItems: String[][]) => {
+      console.log('menuItemService answer:', menuItems);
+      this.menuItems = menuItems;
       console.log("Menu from server:",this.menuItems);
     });
   }
@@ -25,8 +26,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() { }
 
   select(item: String) {
-    this.selected = item;
-    console.log(this.selected);
-    this.router.navigate(['home', this.selected]);
+    console.log('selected: ', item);
+    this.routeDir.navigate(["home", item]);
   }
 }

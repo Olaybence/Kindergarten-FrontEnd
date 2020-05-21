@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MenuItemService {
     // Head elements (menuItems[i][0]) is the main menupoints
     // and the following point of the i. array are the subpoints of that menupoint (menuItems[i][1...n])

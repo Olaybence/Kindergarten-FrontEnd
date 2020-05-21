@@ -12,10 +12,11 @@ export class MainArticleService {
     constructor(private http: HttpClient) { }
 
     getMainArticles(page: String = "") : Observable<Array<Article>> {
-        return this.http.get<Array<Article>>('http://localhost:8080/main-articles'); // TODO BACKEND: /articles into /main-articles
+        console.log('getMainArticles page',page);
+        return this.http.get<Array<Article>>(`http://localhost:8080/main-articles/${page}`);
     }
 
-    getMainArticle(id: number) : Observable<Article> {
+    getMainArticleById(id: number) : Observable<Article> {
         return this.http.get<Article>(`http://localhost:8080/main-articles/${id}`);
     }
 }

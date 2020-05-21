@@ -48,30 +48,23 @@ const routes: Routes = [
     path: 'admin', 
     component: AdminComponent,
     // canActivate:[RouteGuardService]
-    children: [
-      {
-        path: ':article',
-        component: ArticleEditorComponent,
-      },
-      {
-        path: '',
-        component: HomeSettingsComponent
-      }
-    ]
+  },
+  {
+    path: 'admin/:article', 
+    component: AdminComponent,
+    // canActivate:[RouteGuardService]
   },
   { 
     path: 'home',
     component: HomeComponent,
-    children: [
-      {
-        path: ':article',
-        component: MainArticlesComponent
-      },
-      {
-        path: '',
-        component: MainArticlesComponent
-      }
-    ]
+  },
+  { 
+    path: 'home/:article',
+    component: HomeComponent,
+  },
+  { 
+    path: 'home/id/:id',
+    component: HomeComponent,
   },
   {
     path: '**', 

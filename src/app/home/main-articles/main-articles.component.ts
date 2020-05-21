@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/utils/article';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MainArticleService } from 'src/app/service/data/MainArticleService';
 
 @Component({
@@ -12,10 +12,12 @@ import { MainArticleService } from 'src/app/service/data/MainArticleService';
 export class MainArticlesComponent implements OnInit {
   mainArticles: Array<Article> = new Array<Article>();
   activePage: String;
+  artId: number;
 
-  constructor(private router: ActivatedRoute,
+  constructor(private routeDir: Router,
+              private router: ActivatedRoute,
               private maService: MainArticleService) {
-    this.activePage = this.router.snapshot.paramMap.get('article');
+    
     maService.getMainArticles(this.activePage).subscribe((ans: Array<Article>) => {
       this.mainArticles = ans;
       console.log("Main-articles from server",this.mainArticles);
@@ -24,11 +26,23 @@ export class MainArticlesComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.paramMap.subscribe(params => {
+      console.log('MainArticlesComponent ngOnInit',params);
       this.activePage = params.get('article');
-      this.maService.getMainArticles(this.activePage).subscribe((ans: Array<Article>) => {
-        this.mainArticles = ans;
-      });
+      
+      if(this.artId != null && this.artId != NaN) {
+        this.maService.getMainArticleById(this.artId).subscribe((ans: Article) => {
+          this.mainArticles = [ans];
+        });
+      } else {
+        this.maService.getMainArticles(this.activePage).subscribe((ans: Array<Article>) => {
+          this.mainArticles = ans;
+        });
+      }
     });
+  }
+
+  openArticle(i: number) {
+    this.routeDir.navigate(['home','id',i]);
   }
 
 }
